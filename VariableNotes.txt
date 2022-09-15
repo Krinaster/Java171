@@ -1,0 +1,19 @@
+// Primitive Data Types (Only hold data)
+// Examples of Primitive: byte, short, int, long, float, double, char, and boolean
+// Number of bytes for data: 1   2		4	8		4		8		1		1
+// Abstract Data Types (have functionality) (class types)
+// Abstract Examples: JOptionPane,UImanager Font, Color, System
+// Abstract data types have corresponding commands called wrapper classes
+// capitals matter, Byte, Short, integer, Long, Float, Double, Character, Boolean
+
+// Byte - 8 bits (1s or 0s)
+// In a byte the max values are -128 to 127
+// The first 0 or 1 in a byte is a sign byte
+// and each byte is 2 to the power of its position
+// so it is + or -, 1x2^6, 0x2^5 all the way to 1x2^0
+// The 1 or 0 decides whether or not it is a 0 or 1 in the multiplication position
+
+// short   2 bytes 32,767
+// int     4 bytes 2,147,483,647 (default integers)
+// long    8 bytes 
+

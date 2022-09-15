@@ -1,0 +1,49 @@
+Division Algorithim for calculating binary
+
+		Remainder column should be the binary problem, and then flip it to reach 11110100
+		Divide until zero and give zero a remainder of 1
+	2|500 R:0
+	2|250 R:0
+	2|125 R:0
+	2|62  R:1
+	2|31  R:0
+	2|15  R:1
+	2|7   R:1
+	2|3   R:1
+	2|1   R:1
+	  0   R:1      
+	8|822
+	8|102 R:6
+	8|12  R:6
+	8|1   R:4
+	  0   R:1
+	  
+	  octobase is 1466
+	          
+	 16|6000
+	 16|375     R:0
+	 16|23     R:7
+	 16|1     R:7
+	    0     R:1
+		
+		hexdecimal is 1770
+	        
+			
+Two's Complement Representation (TCR)
+
+1) Flip all bits
+2) Determine base 10 number
+3) Add 1
+
+	Result is magnitude of the negative number
+	
+11111111 base 2 = 00000000
+				= 0
+				+ 1
+				= 0
+		Flip all bits  Add 1 	This is negative 23
+11101001 = 00010110 = 22 + 1 = -23
+
+
+
+		
