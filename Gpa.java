@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import java.text.DecimalFormat;
 
 public class Gpa {
 	
@@ -8,33 +9,42 @@ public class Gpa {
 		Scanner keyboard = new Scanner(System.in);
 		String grade1, grade2, grade3, grade4;
 		int creditHours1, creditHours2, creditHours3, creditHours4;
+		int gradeValue1, gradeValue2, gradeValue3, gradeValue4;
+		DecimalFormat gpa = new DecimalFormat("#.00");
 		
 		// Class 1
-		System.out.print("What is your grade in Class 1? ");
-		grade1 = keyboard.nextLine();
+		System.out.print("What is your letter grade in Class 1? ");
+		grade1 = keyboard.next();
 		System.out.print("How many credit hours is Class 1? ");
 		creditHours1 = keyboard.nextInt();
 		
 		// Class 2
-		System.out.println("What is your grade in Class 2? ");
-		grade2 = keyboard.nextLine();
+		System.out.print("What is your letter grade in Class 2? ");
+		grade2 = keyboard.next();
 		System.out.print("How many credit hours is Class 2? ");
 		creditHours2 = keyboard.nextInt();
 		
 		// Class 3
-		System.out.println("What is your grade in Class 3? ");
-		grade3 = keyboard.nextLine();
+		System.out.print("What is your letter grade in Class 3? ");
+		grade3 = keyboard.next();
 		System.out.print("How many credit hours is Class 3? ");
 		creditHours3 = keyboard.nextInt();
 		
 		// Class 4
-		System.out.println("What is your grade in Class 4? ");
-		grade4 = keyboard.nextLine();
+		System.out.print("What is your letter grade in Class 4? ");
+		grade4 = keyboard.next();
 		System.out.print("How many credit hours is Class 4? ");
 		creditHours4 = keyboard.nextInt();
 		
+		gradeValue1 = (int)('F' - grade1.charAt(0)- 1);
+		gradeValue2 = (int)('F' - grade2.charAt(0)- 1);
+		gradeValue3 = (int)('F' - grade3.charAt(0)- 1);
+		gradeValue4 = (int)('F' - grade4.charAt(0)- 1);
 		
-	    
+	    System.out.println(gradeValue1);
+		
+		double finalQualityGrade = (gradeValue1 * creditHours1) + (gradeValue2 * creditHours2) + (gradeValue3 * creditHours3) + (gradeValue4 * creditHours4);
+		System.out.println(finalQualityGrade / (creditHours1 + creditHours2 + creditHours3 + creditHours4));
 		// gradeValue = (int)('F' - grade.charAt(0)- 1);
 		// System.out.println(gradeValue);
 	
@@ -46,6 +56,11 @@ public class Gpa {
 	}
 }
 
+// Need to do:
+// Finishing setting up decimal format
+// and outputting gpa in decimal format
+// Code cleanup
+// JOptionPane setup
 
 // ASCII table values
 // A = 65
