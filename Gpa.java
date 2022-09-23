@@ -10,7 +10,7 @@ public class Gpa {
 		String grade1, grade2, grade3, grade4;
 		int creditHours1, creditHours2, creditHours3, creditHours4;
 		int gradeValue1, gradeValue2, gradeValue3, gradeValue4;
-		DecimalFormat gpa = new DecimalFormat("#.00");
+		DecimalFormat gpa = new DecimalFormat("#.00000");
 		
 		// Class 1
 		System.out.print("What is your letter grade in Class 1? ");
@@ -36,19 +36,20 @@ public class Gpa {
 		System.out.print("How many credit hours is Class 4? ");
 		creditHours4 = keyboard.nextInt();
 		
+		// Making grade letters into numbers
 		gradeValue1 = (int)('F' - grade1.charAt(0)- 1);
 		gradeValue2 = (int)('F' - grade2.charAt(0)- 1);
 		gradeValue3 = (int)('F' - grade3.charAt(0)- 1);
 		gradeValue4 = (int)('F' - grade4.charAt(0)- 1);
 		
-	    System.out.println(gradeValue1);
+		// Final Quality Points Value
+		double finalQualityGrade = (gradeValue1 * creditHours1) + 
+		(gradeValue2 * creditHours2) + (gradeValue3 * creditHours3) + 
+		(gradeValue4 * creditHours4);
 		
-		double finalQualityGrade = (gradeValue1 * creditHours1) + (gradeValue2 * creditHours2) + (gradeValue3 * creditHours3) + (gradeValue4 * creditHours4);
-		System.out.println(finalQualityGrade / (creditHours1 + creditHours2 + creditHours3 + creditHours4));
-		// gradeValue = (int)('F' - grade.charAt(0)- 1);
-		// System.out.println(gradeValue);
-	
-	
+		// Printing GPA after dividing quality points by total credit hours
+		System.out.println("Your GPA is: " + gpa.format(finalQualityGrade / 
+		(creditHours1 + creditHours2 + creditHours3 + creditHours4)));
 	
 	
 	
@@ -84,3 +85,7 @@ public class Gpa {
 // grade value * credit hours 4 times
 // can store value or just divide it by total credit hours
 // then output final value
+
+	// gradeValue = (int)('F' - grade.charAt(0)- 1);
+		// System.out.println(gradeValue);
+	
