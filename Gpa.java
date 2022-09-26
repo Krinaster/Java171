@@ -7,10 +7,17 @@ public class Gpa {
 	public static void main(String [] args) {
 	
 		Scanner keyboard = new Scanner(System.in);
-		String grade1, grade2, grade3, grade4, name, numberOfClasses;
+		String grade1, grade2, grade3, grade4, name, numberOfClasses, enteringCode;
 		int creditHours1, creditHours2, creditHours3, creditHours4;
 		int gradeValue1, gradeValue2, gradeValue3, gradeValue4;
 		DecimalFormat gpa = new DecimalFormat("#.00000");
+		// Enter an if, if else, and else statement for wanting to enter command prompt or joptionpane
+		// the else being an error just for the sense of control
+		
+		System.out.print("If you want command prompt, please enter C");
+		System.out.println("If you want to use JOptionPane, please enter J");
+		enteringCode = keyboard.next();
+		if(enteringCode == "C"){
 		
 		// Command Prompt
 		// Class 1
@@ -51,7 +58,9 @@ public class Gpa {
 		// Printing GPA after dividing quality points by total credit hours
 		System.out.println("Your GPA is: " + gpa.format(finalQualityGrade / 
 		(creditHours1 + creditHours2 + creditHours3 + creditHours4)));
+		}
 		
+		   if else( enteringCode == "J"){
 		// JOptionPane
 		name = JOptionPane.showInputDialog(null, "Hello, what is your name? ");
 		numberOfClasses = JOptionPane.showInputDialog(null, "Hello " + name + ", how many classes are you taking? ");
@@ -59,7 +68,9 @@ public class Gpa {
 		creditHours1 = Integer.parseInt(JOptionPane.showInputDialog(null, "How many credit hours is your first class? "));
 		// Look at loops to make a switch statement that calculates grade
 		// If cant figure it out, just do normal method with JOptionPane
-	
+		   }
+		else
+		   System.out.println("Please enter a valid letter");
 	}
 }
 
