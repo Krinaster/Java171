@@ -7,11 +7,12 @@ public class Gpa {
 	public static void main(String [] args) {
 	
 		Scanner keyboard = new Scanner(System.in);
-		String grade1, grade2, grade3, grade4;
+		String grade1, grade2, grade3, grade4, name, numberOfClasses;
 		int creditHours1, creditHours2, creditHours3, creditHours4;
 		int gradeValue1, gradeValue2, gradeValue3, gradeValue4;
 		DecimalFormat gpa = new DecimalFormat("#.00000");
 		
+		// Command Prompt
 		// Class 1
 		System.out.print("What is your letter grade in Class 1? ");
 		grade1 = keyboard.next();
@@ -50,17 +51,20 @@ public class Gpa {
 		// Printing GPA after dividing quality points by total credit hours
 		System.out.println("Your GPA is: " + gpa.format(finalQualityGrade / 
 		(creditHours1 + creditHours2 + creditHours3 + creditHours4)));
-	
-	
-	
+		
+		// JOptionPane
+		name = JOptionPane.showInputDialog(null, "Hello, what is your name? ");
+		numberOfClasses = JOptionPane.showInputDialog(null, "Hello " + name + ", how many classes are you taking? ");
+		grade1 = JOptionPane.showInputDialog(null, "Okay " + name + ", what is your grade for your first class? ");
+		creditHours1 = Integer.parseInt(JOptionPane.showInputDialog(null, "How many credit hours is your first class? "));
+		// Look at loops to make a switch statement that calculates grade
+		// If cant figure it out, just do normal method with JOptionPane
 	
 	}
 }
 
 // Need to do:
-// Finishing setting up decimal format
-// and outputting gpa in decimal format
-// Code cleanup
+// allow command prompt input of A and a 
 // JOptionPane setup
 
 // ASCII table values
