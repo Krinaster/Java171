@@ -1,24 +1,33 @@
+// Author 		 : Caden Boldenow
+// Date Created  : 9/20/22
+// Last Modified : 9/26/22
+// Description   : Program collects grade and credit hours to caluculate gpa
+
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import java.text.DecimalFormat;
+import javax.swing.UIManager;
+import java.awt.Color;
 
 public class Gpa {
 	
 	public static void main(String [] args) {
 	
+		// Variable defining
 		Scanner keyboard = new Scanner(System.in);
-		String grade1, grade2, grade3, grade4, name, numberOfClasses, enteringCode;
+		String grade1, grade2, grade3, grade4, name, enteringCode;
 		int creditHours1, creditHours2, creditHours3, creditHours4;
 		int gradeValue1, gradeValue2, gradeValue3, gradeValue4;
 		DecimalFormat gpa = new DecimalFormat("#.00000");
-		// Enter an if, if else, and else statement for wanting to enter command prompt or joptionpane
-		// the else being an error just for the sense of control
 		
+		
+		System.out.println("Hello, welcome to a GPA calculator.");
 		System.out.print("If you want command prompt, please enter C");
-		System.out.println("If you want to use JOptionPane, please enter J");
-		enteringCode = keyboard.next();
-		if(enteringCode == "C"){
-		
+		System.out.println("\nIf you want to use JOptionPane, please enter J");
+		enteringCode = keyboard.nextLine();
+		// Quick switch from command prompt to JOptionPane
+		if(enteringCode.equals("C")){
+		System.out.println("Please only use A, B, C, and D for letter grades");
 		// Command Prompt
 		// Class 1
 		System.out.print("What is your letter grade in Class 1? ");
@@ -60,15 +69,62 @@ public class Gpa {
 		(creditHours1 + creditHours2 + creditHours3 + creditHours4)));
 		}
 		
-		   if else( enteringCode == "J"){
 		// JOptionPane
-		name = JOptionPane.showInputDialog(null, "Hello, what is your name? ");
-		numberOfClasses = JOptionPane.showInputDialog(null, "Hello " + name + ", how many classes are you taking? ");
-		grade1 = JOptionPane.showInputDialog(null, "Okay " + name + ", what is your grade for your first class? ");
-		creditHours1 = Integer.parseInt(JOptionPane.showInputDialog(null, "How many credit hours is your first class? "));
-		// Look at loops to make a switch statement that calculates grade
-		// If cant figure it out, just do normal method with JOptionPane
+		// Teaching myself loops for this
+		   else if(enteringCode.equals("J")){
+	
+		// Variable defining for JOptionPane
+		int numberOfClasses, qualityPoints = 0, gradeValue = 0, 
+		creditHours = 0;
+		double totalCreditHours = 0, totalQualityPoints = 0;
+		String grade = "";
+		
+		// Some Preliminary Questions for loop
+		name = JOptionPane.showInputDialog(null, "Hello, what is your name? ",
+			"GPA Calculator", JOptionPane.PLAIN_MESSAGE);
+		numberOfClasses = Integer.parseInt(JOptionPane.showInputDialog(null, 
+			"Hello " + name + ", how many classes are you taking? ",
+			"GPA Calculator", JOptionPane.INFORMATION_MESSAGE));
+		
+		for(int i = 0; i < numberOfClasses; i++){
+			grade = JOptionPane.showInputDialog(null, "Okay " + name + 
+			", what is your grade for one of your classes?", "GPA Calculator",
+			JOptionPane.INFORMATION_MESSAGE);
+			
+			// Switch statement used to convert grade letters to values
+			switch(grade) {
+				case "A":
+				case "a": gradeValue++;
+				case "B":
+				case "b": gradeValue++;
+				case "C":
+				case "c": gradeValue++;
+				case "D":
+				case "d": gradeValue++;
+				case "F": 
+				case "f":
+				
+			}
+			
+			creditHours = Integer.parseInt(JOptionPane.showInputDialog(null, 
+				"How many credit hours is this class?", "GPA Calculator", 
+				JOptionPane.INFORMATION_MESSAGE));
+			// Looping creditHours and grade question and store the values
+			totalCreditHours += creditHours; // Storing total credithours
+			qualityPoints = gradeValue * creditHours;
+			totalQualityPoints += qualityPoints; // Storing total quality 
+			// Then reinintializing values for loop
+			qualityPoints = 0;
+			gradeValue = 0;
+			
+		}
+	
+		// JOptionPane Final Calculation
+		JOptionPane.showMessageDialog(null, "GPA: " + 
+			gpa.format(totalQualityPoints/totalCreditHours), "GPA Calculator", 
+			JOptionPane.INFORMATION_MESSAGE);
 		   }
+		// Catch all for if you dont go to command prompt or JOptionPane
 		else
 		   System.out.println("Please enter a valid letter");
 	}
@@ -104,3 +160,4 @@ public class Gpa {
 	// gradeValue = (int)('F' - grade.charAt(0)- 1);
 		// System.out.println(gradeValue);
 	
+
