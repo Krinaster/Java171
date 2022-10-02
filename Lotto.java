@@ -9,25 +9,94 @@ import java.util.Scanner;
 public class Lotto {
 
 	static final int DEFAULT_MONTH = 5;
-	static final int DEFAULT_YEAR = 2005;
-	static final int DEFAULT_DAY = 10;
 	static final double DEFAULT_WAGE = 12.50;
+	static final int DEFAULT_DAY = 10;
+	static final int DEFAULT_ANGLE = 90;
+	static final char DEFAULT_KEY = 'm';
 	static final String DEFAULT_PHRASE = "Lord of the Rings is the best"; 
 
 	public static void main(String [] args) {
 
 	Scanner keyboard = new Scanner(System.in);
-	int enteredMonth;
+	int enteredMonth, enteredDay, enteredAngle;
+	double enteredWage;
+	String enteredPhrase;
+	char enteredKey;
+	
 	
 	System.out.println("Welcome to this random number generator for Lottery Tickets.");
-	System.out.print("Please enter your favorite month: ");
+	
+	
+	// Month calculations for Number 1 in Lottery Ticket
+	System.out.print("Please enter your favorite month (1-12): ");
 	enteredMonth = keyboard.nextInt();
-	System.out.print(enteredMonth);
-	// Cool idea, have them type in month and convert to number to do calculations
-	// Like not string length but month number
+	System.out.print(enteredMonth); // Remove when done
+	if(enteredMonth < 1 || enteredMonth > 12)
+		enteredMonth = DEFAULT_MONTH;
+	System.out.print("\n" +enteredMonth); // Remove when done
+	
+	// Day of Birth
+	System.out.print("\nPlease enter the day your were born: ");
+	enteredDay = keyboard.nextInt();
+	System.out.print(enteredDay);
+	if(enteredDay < 1|| enteredDay > 31)
+		enteredDay = DEFAULT_DAY;
+	System.out.print("\n" + enteredDay);
+	
+	// Wage
+	System.out.print("\nPlease enter desired wage from your job or current wage: ");
+	enteredWage = keyboard.nextDouble();
+	System.out.print(enteredWage);
+	if(enteredWage < 0 )
+		enteredWage = DEFAULT_WAGE;
+	System.out.print("\n" + enteredWage);
+	
+	// used to eat leftover scanner data for next line to work
+	keyboard.nextLine();
+	// Favorite Phrase
+	System.out.print("\nPlease enter your favorite phrase or a phrase you live by: ");
+	enteredPhrase = keyboard.nextLine();
+	System.out.print(enteredPhrase);
+	System.out.print("\n" + enteredPhrase.length());
+	
+	// Angle you like
+	System.out.print("\nPlease enter an angle (in degrees) you like: ");
+	enteredAngle = keyboard.nextInt();
+	System.out.print(enteredAngle);
+	
+	// Key on keyboard
+	System.out.print("\nPlease enter a random key on the keyboard: ");
+	enteredKey = keyboard.next().charAt(0);
+	System.out.print(enteredKey);
 	
 	
-	// JTextField questionField = new JTextField(5);
+	// Calculations for the inputted values, then printing lottery ticket
+	enteredMonth = ((enteredMonth * 198) % 70) + 1;
+	enteredDay = (int)(Math.pow(enteredDay, 4) % 70 +1);
+	int Wage = (int)(enteredWage * 100) % 70 + 1;
+	int Phrase =(int)((Math.pow(enteredPhrase.length(), 3) % 70) + 1);
+	enteredAngle = (int)(Math.abs(Math.sin((enteredAngle * 180)/Math.PI)) * 69) + 1;
+	int Key = (int)enteredKey % 69 + 1;
+	
+	System.out.print("\n And your lottery ticket numbers is: "
+		+ enteredMonth + "-" + enteredDay + "-" + Wage + "-" +
+		Phrase + "-" + enteredAngle + " and the powerball is: " + Key);
+	
+	// Cleanup code and take out all system.out.print that show values of variable
+	// Finish documenting code
+	// Do extra credit that just checks that none of the values are the saem
+	// Make sure everything has a default value to go to 
+	// and remove imports that are not needed
+	
+	
+	
+	
+
+	}
+}
+
+
+// JTextField questionField = new JTextField(5);
 	
 	// JPanel questionPanel = new JPanel();
 	
@@ -42,11 +111,6 @@ public class Lotto {
 	
 	// To get input from panel, do whateverfield.getText()
 	
-	
-
-	}
-}
-
 /* PROGRAM #3
 LOTTO NUMBERS: 1-69 6#'s _ _ _ _ _ _ PowerBall # _
 PowerBall# is 69/hourlywage cast as (int)(69/wage)
