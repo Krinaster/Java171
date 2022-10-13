@@ -10,7 +10,13 @@ public class Decipher {
 	
 	public static void main(String [] args){
 		
-
+	// Basic flow chart for this code is to first
+	// Create printwriter to read encrypted and make sure the file exists
+	// create file for the plain txt and nothing else
+	// Then figure out how to undo the encryption 
+	// Use stringbuilder and append to connect the strings
+	// then finally use printwriter to print the infromation to plain txt
+	// and console
 		
 		
 	}
