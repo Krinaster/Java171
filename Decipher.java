@@ -36,8 +36,7 @@ public class Decipher {
 			System.out.print(letterValue);
 			message = message.append(letterValue);
 		}
-		System.out.println();
-		System.out.print(message);
+	
 		toFile.print(message);
 		toFile.flush();
 	}
