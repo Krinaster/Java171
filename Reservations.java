@@ -5,11 +5,18 @@ package reservations;
 public class Reservations {
     
     public static final int NUM_ROWS = 25;
-    public static final int NUM_COLOUMNS = 6;
+    public static final int NUM_COLUMNS = 6;
     
     public static void main(String[] args) {
-       
-    int seats[][] = new int[NUM_ROWS][NUM_COLOUMNS];
+    
+    // General plan of attack currently:
+    // find out how to make row and column headers
+    // make the isValid method
+    // the displayMenu method
+    // put into doWhile loop
+    // and just generally look at the program specifications to figure out everything else
+    // and refer to flowchart at bottom
+    int seats[][] = new int[NUM_ROWS][NUM_COLUMNS];
     
     
     // This finds the coloumn that you want to have as the aisle, and turns all the values into 1's
