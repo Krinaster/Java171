@@ -7,11 +7,11 @@ import java.util.Scanner;
 public class Reservations {
     
     public static final int ROW_SIZE = 10;
-    public static final int LEFT_COL_SIZE = 3;
+    public static final int LEFT_COL_SIZE = 8;
     public static final int RIGHT_COL_SIZE = 5;
     public static final char OPEN_SEAT = 'O';
     public static final char SEAT_TAKEN = 'X';
-    
+     
     public static void main(String[] args) {
     
     // General plan of attack currently:
@@ -24,7 +24,6 @@ public class Reservations {
     
     // I have the +1 and the +2 respectively to make room for a row and 2 columns for the header and then the aisle
     String[][] seats = new String[ROW_SIZE+1][LEFT_COL_SIZE + RIGHT_COL_SIZE+2];
-   
     displayMenu(seats);
     // Initializes the entire array to open seats and then for loops after make the display menu
     //for(int i =0; i<seats.length; i++)
@@ -61,6 +60,8 @@ public class Reservations {
     public static void displayMenu(String seats[][]){
         Scanner keyboard = new Scanner(System.in);
         String seatTry = null;
+        String[] STRING_SPLITTER = new String[(LEFT_COL_SIZE+RIGHT_COL_SIZE%10)+2];
+        
         do{
             System.out.println("Welcome to our AirLine Seat Reservations");
             // Initializes the entire array to open seats and then for loops after make the display menu
@@ -88,7 +89,19 @@ public class Reservations {
             System.out.println("Please enter the row number and "
                     + "seat number you desire (Enter -1 to quit): ");
             // Stores whatever the person inputs as seat number
-            seatTry = keyboard.nextLine();
+            seatTry = keyboard.next();
+            
+            // Using this method the input is not given is split into however many characters
+            // need to later retry if the input is not A) two characters
+            // then B) specifically what we want as the input
+            
+            // Will troubleshoot this method later for expasion
+            // this method here splits bigger assignments like A13 into A 1 3
+            // which is something we dont want
+            STRING_SPLITTER = seatTry.split("");
+            for(String character : STRING_SPLITTER)
+                System.out.print(character + " ");
+            
             // Now I gotta figure out how to split the string into 2 parts based on the input,
             // and tell them to retry if a given input is not acceptable
             // maybe can use the valid seat choice method to do that and check seat availability
