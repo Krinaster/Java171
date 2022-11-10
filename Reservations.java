@@ -1,4 +1,3 @@
-
 package reservations;
 
 import java.util.Scanner;
@@ -64,6 +63,7 @@ public class Reservations {
         
         do{
             System.out.println("Welcome to our AirLine Seat Reservations");
+            System.out.println();
             // Initializes the entire array to open seats and then for loops after make the display menu
             for (String[] seat : seats) 
                 for (int j = 0; j < seat.length; j++) 
@@ -86,6 +86,9 @@ public class Reservations {
           
             print(seats);
             
+            System.out.println();
+            // Maybe split this into two options, where you can run the program or you can quit
+            // and or randomly fill the seating chart 
             System.out.println("Please enter the row number and "
                     + "seat number you desire (Enter -1 to quit): ");
             // Stores whatever the person inputs as seat number
@@ -101,7 +104,7 @@ public class Reservations {
             STRING_SPLITTER = seatTry.split("");
             for(String character : STRING_SPLITTER)
                 System.out.print(character + " ");
-            
+            System.out.println();
             // Now I gotta figure out how to split the string into 2 parts based on the input,
             // and tell them to retry if a given input is not acceptable
             // maybe can use the valid seat choice method to do that and check seat availability
