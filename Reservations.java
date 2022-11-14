@@ -101,9 +101,13 @@ public class Reservations {
             if(isValid(STRING_SPLITTER, seats) == false)
                 System.out.println("Invalid seat, please enter a valid seat");
             else{
-                
+                if(Integer.parseInt(STRING_SPLITTER[1]) >= LEFT_COL_SIZE + 1)
+                   seats[STRING_SPLITTER[0].charAt(0)-64][Integer.parseInt(STRING_SPLITTER[1]+1)] = "" + SEAT_TAKEN;
+                else
+                    seats[STRING_SPLITTER[0].charAt(0) - 64][Integer.parseInt(STRING_SPLITTER[1])] = "" + SEAT_TAKEN;
             }
-                
+            // Redisplay table with updated prompts
+            
             // Test for seat choice
             /*for(String character : STRING_SPLITTER)
                 System.out.print(character + " ");
