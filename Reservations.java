@@ -51,14 +51,14 @@ public class Reservations {
                 for (int j = 0; j < seat.length; j++) 
                     seat[j] = "" + OPEN_SEAT;
             // Randomizes seat arrangement
-            for(int i =0; i<seats.length; i++)
-                for(int j=0; j<seats[i].length; j++){
-                    int k = rand.nextInt(100)+1;
-                    if(k% 2 == 0)
-                        seats[i][j] = "" + SEAT_TAKEN;
-                    else
-                        seats[i][j] = "" + OPEN_SEAT;
-                }
+           // for(int i =0; i<seats.length; i++)
+            //    for(int j=0; j<seats[i].length; j++){
+            //        int k = rand.nextInt(100)+1;
+            //        if(k% 2 == 0)
+            //            seats[i][j] = "" + SEAT_TAKEN;
+            //        else
+            //            seats[i][j] = "" + OPEN_SEAT;
+            //    }
             //For loop to make heading for rows
             for(int i=1; i<seats.length; i++)
                 seats[i][0] ="" + (char)((int)'@'+i);
@@ -97,12 +97,16 @@ public class Reservations {
             // which is something we dont want
             // Current method is limited to only a letter and number input
             STRING_SPLITTER = seatTry.split("");
-            
+            for(int i= 0; i<STRING_SPLITTER.length; i++)
+                System.out.println(STRING_SPLITTER[i]);
+            System.out.println(STRING_SPLITTER[0].charAt(0)-64);
+            System.out.println(Integer.parseInt(STRING_SPLITTER[1])+1);
+            System.out.println(seats[STRING_SPLITTER[0].charAt(0)-64][Integer.parseInt(STRING_SPLITTER[1])+1]);
             if(isValid(STRING_SPLITTER, seats) == false)
                 System.out.println("Invalid seat, please enter a valid seat");
             else{
                 if(Integer.parseInt(STRING_SPLITTER[1]) >= LEFT_COL_SIZE + 1)
-                   seats[STRING_SPLITTER[0].charAt(0)-64][Integer.parseInt(STRING_SPLITTER[1]+1)] = "" + SEAT_TAKEN;
+                   seats[STRING_SPLITTER[0].charAt(0)-64][Integer.parseInt(STRING_SPLITTER[1])+2] = "" + SEAT_TAKEN;
                 else
                     seats[STRING_SPLITTER[0].charAt(0) - 64][Integer.parseInt(STRING_SPLITTER[1])] = "" + SEAT_TAKEN;
             }
