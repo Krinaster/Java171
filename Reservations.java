@@ -41,7 +41,7 @@ public class Reservations {
         Scanner keyboard = new Scanner(System.in);
         String seatTry = null;
         String[] STRING_SPLITTER = new String[2];
-        boolean exit = false, rightOfAisle = false;
+        boolean exit = false;
         Random rand = new Random();
         
         System.out.println("Welcome to our AirLine Seat Reservations");
@@ -92,11 +92,11 @@ public class Reservations {
      
             // Not going to lie, looked this one up
             STRING_SPLITTER = seatTry.split("(?<=\\D)(?=\\d)");
+            
             for(int i= 0; i<STRING_SPLITTER.length; i++)
                 System.out.println(STRING_SPLITTER[i]);
             
-            //System.out.println(convertRow(STRING_SPLITTER));
-            //System.out.println(convertColumn(STRING_SPLITTER));
+            
             // Troubleshooting print statements to check STRING_SPLITTER
             //System.out.println(STRING_SPLITTER[0].charAt(0)-64);
             //System.out.println(Integer.parseInt(STRING_SPLITTER[1])+1);
@@ -104,14 +104,9 @@ public class Reservations {
             
             if(isValid(STRING_SPLITTER, seats) == false)
                 System.out.println("Invalid seat, please enter a valid seat");
-            else{
-                if(Integer.parseInt(STRING_SPLITTER[1]) >= LEFT_COL_SIZE + 1)
-                   seats[STRING_SPLITTER[0].charAt(0)-64][Integer.parseInt(STRING_SPLITTER[1])+1] = "" + SEAT_TAKEN;
-                else
-                    seats[STRING_SPLITTER[0].charAt(0) - 64][Integer.parseInt(STRING_SPLITTER[1])] = "" + SEAT_TAKEN;
-            }
+            else
+                seats[convertRow(STRING_SPLITTER)][convertColumn(STRING_SPLITTER)] = "" + SEAT_TAKEN;
             // Redisplay table with updated prompts
-            
             
         }
     while(!exit == true);
@@ -131,12 +126,8 @@ public class Reservations {
         else if(o[0].charAt(0) < 65)
             valid = false;
         // Checks if the seat is taken, and if so returns false
-        if(Integer.parseInt(o[1]) < LEFT_COL_SIZE + 1)
-            valid = !m[o[0].charAt(0)-64][Integer.parseInt(o[1])].equals("" + SEAT_TAKEN);
-        else if(Integer.parseInt(o[1]) >= LEFT_COL_SIZE + 1)
-            valid = !m[o[0].charAt(0)-64][Integer.parseInt(o[1])+1].equals("" + SEAT_TAKEN);
-        else
-            valid = true;
+        else 
+            valid = !m[convertRow(o)][convertColumn(o)].equals("" + SEAT_TAKEN);
         return valid;
     }
     
@@ -145,10 +136,14 @@ public class Reservations {
     }
     
     public static int convertColumn(String[] o){
+        int a = 0;
         if(Integer.parseInt(o[1]) >= LEFT_COL_SIZE + 1)
-            o[1] = "" + (int)(Integer.parseInt(o[1]) + 1);
-        return Integer.parseInt(o[1]);
+            a = Integer.parseInt(o[1]) + 1;
+        else
+            a = Integer.parseInt(o[1]);
+        return a;
     }
+
 } // End of class
 
 /* General flow chart
