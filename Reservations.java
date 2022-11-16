@@ -43,8 +43,8 @@ public class Reservations {
         String[] STRING_SPLITTER = new String[2];
         boolean exit = false, rightOfAisle = false;
         Random rand = new Random();
-        do{
-            System.out.println("Welcome to our AirLine Seat Reservations");
+        
+        System.out.println("Welcome to our AirLine Seat Reservations");
             System.out.println();
             // Initializes the entire array to open seats and then for loops after make the display menu
             for (String[] seat : seats) 
@@ -78,6 +78,7 @@ public class Reservations {
             // Makes top left corner a blank
             seats[0][0] = "";
             
+        do{
             print(seats);
             
             System.out.println();
@@ -88,36 +89,30 @@ public class Reservations {
             seatTry = keyboard.next();
             if(seatTry.equals("-1"))
                 exit = true;
-            // Using this method the input is not given is split into however many characters
-            // need to later retry if the input is not A) two characters
-            // then B) specifically what we want as the input
-            
-            // Will troubleshoot this method later for expasion
-            // this method here splits bigger assignments like A13 into A 1 3
-            // which is something we dont want
-            // Current method is limited to only a letter and number input
-            STRING_SPLITTER = seatTry.split("");
+     
+            // Not going to lie, looked this one up
+            STRING_SPLITTER = seatTry.split("(?<=\\D)(?=\\d)");
             for(int i= 0; i<STRING_SPLITTER.length; i++)
                 System.out.println(STRING_SPLITTER[i]);
-            System.out.println(STRING_SPLITTER[0].charAt(0)-64);
-            System.out.println(Integer.parseInt(STRING_SPLITTER[1])+1);
-            System.out.println(seats[STRING_SPLITTER[0].charAt(0)-64][Integer.parseInt(STRING_SPLITTER[1])+1]);
+            
+            //System.out.println(convertRow(STRING_SPLITTER));
+            //System.out.println(convertColumn(STRING_SPLITTER));
+            // Troubleshooting print statements to check STRING_SPLITTER
+            //System.out.println(STRING_SPLITTER[0].charAt(0)-64);
+            //System.out.println(Integer.parseInt(STRING_SPLITTER[1])+1);
+            //System.out.println(seats[STRING_SPLITTER[0].charAt(0)-64][Integer.parseInt(STRING_SPLITTER[1])+1]);
+            
             if(isValid(STRING_SPLITTER, seats) == false)
                 System.out.println("Invalid seat, please enter a valid seat");
             else{
                 if(Integer.parseInt(STRING_SPLITTER[1]) >= LEFT_COL_SIZE + 1)
-                   seats[STRING_SPLITTER[0].charAt(0)-64][Integer.parseInt(STRING_SPLITTER[1])+2] = "" + SEAT_TAKEN;
+                   seats[STRING_SPLITTER[0].charAt(0)-64][Integer.parseInt(STRING_SPLITTER[1])+1] = "" + SEAT_TAKEN;
                 else
                     seats[STRING_SPLITTER[0].charAt(0) - 64][Integer.parseInt(STRING_SPLITTER[1])] = "" + SEAT_TAKEN;
             }
             // Redisplay table with updated prompts
             
-            // Test for seat choice
-            /*for(String character : STRING_SPLITTER)
-                System.out.print(character + " ");
-            System.out.println();
-            System.out.println(isValid(STRING_SPLITTER, seats));
-            */
+            
         }
     while(!exit == true);
     
@@ -145,6 +140,15 @@ public class Reservations {
         return valid;
     }
     
+    public static int convertRow(String[] o){
+        return o[0].charAt(0) - 64;
+    }
+    
+    public static int convertColumn(String[] o){
+        if(Integer.parseInt(o[1]) >= LEFT_COL_SIZE + 1)
+            o[1] = "" + (int)(Integer.parseInt(o[1]) + 1);
+        return Integer.parseInt(o[1]);
+    }
 } // End of class
 
 /* General flow chart
