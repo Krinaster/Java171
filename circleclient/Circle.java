@@ -1,4 +1,3 @@
-
 package circleclient;
 
 import static java.lang.Math.PI;
@@ -12,13 +11,14 @@ public class Circle {
         this(1, new int[]{0,0});
     }
     
+
     public Circle(double rad, int[] cen){
         radius = (rad > 0)? rad: 1;
         center[0] = cen[0];
         center[1] = cen[1];
     }
     
-    public Circle(double rad, int x, int y){
+    public Circle(double rad, int x, int y) { 
         radius = (rad > 0)? rad: 1;
         center[0] = x;
         center[1] = y;
@@ -52,6 +52,7 @@ public class Circle {
         center[1] = y;
     }
     
+    
     public void setCenter(int[] cen){
         center[0] = cen[0];
         center[1] = cen[1];
@@ -72,11 +73,12 @@ public class Circle {
     
     @Override
     public boolean equals(Object o){
-        return false;
+        return radius==(((Circle)o).radius) && center[0]==(((Circle)o).center[0]) &&
+                center[1]==(((Circle)o).center[1]);
     }
     
-    public boolean areCongruent(int rad){
-        return false;
+    public boolean areCongruent(Circle c){
+        return this.radius == c.radius;
     }
     
     public double area(){
@@ -88,7 +90,12 @@ public class Circle {
     }
     
     public void shift(int x, int y){
-        
+        center[0] += x;
+        center[1] += y;
+    }
+    
+    public void shift(int x){
+        center[0] += x;
     }
 
 } // End of class
