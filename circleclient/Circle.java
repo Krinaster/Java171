@@ -73,8 +73,7 @@ public class Circle {
     
     @Override
     public boolean equals(Object o){
-        return radius==(((Circle)o).radius) && center[0]==(((Circle)o).center[0]) &&
-                center[1]==(((Circle)o).center[1]);
+        return radius == ((Circle)o).radius && center[0] == ((Circle)o).center[0] && center[1] == ((Circle)o).center[1];
     }
     
     public boolean areCongruent(Circle c){
